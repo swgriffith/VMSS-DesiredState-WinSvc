@@ -26,9 +26,12 @@
         "subnetId": {
             "value": "/subscriptions/62afe9fc-190b-4f18-95ac-e5426017d4c8/resourceGroups/ThrowAwayVMSS/providers/Microsoft.Network/virtualNetworks/VMSS-Vnet/subnets/default"
         },
-        "automationAccountName": {
+        "automationRegistrationURL": {
             "value": "DemoDSC"
         },
+        "registrationKey": {
+            "value": "DemoDSC"
+        },        
         "nodeConfigurationName": {
             "value": "TestConfig.IsWebServer"
         }           
