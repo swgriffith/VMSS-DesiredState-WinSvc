@@ -12,28 +12,28 @@
             "value": "Standard_DS1_v2"
         },
         "adminUsername": {
-            "value": "griffith"
+            "value": "<insert admin user name>"
         },        
         "adminPassword": {
-            "value": null
+            "value": "<insert admin passwd>"
         },
         "instanceCount": {
             "value": "2"
         },
         "dnsprefix": {
-            "value": "myscalesetgriffith"
+            "value": "<set unique dns prefix for public IP>"
         },
         "subnetId": {
-            "value": "/subscriptions/62afe9fc-190b-4f18-95ac-e5426017d4c8/resourceGroups/ThrowAwayVMSS/providers/Microsoft.Network/virtualNetworks/VMSS-Vnet/subnets/default"
+            "value": "<go to the Vnet properties and get the id> /subnets/ <subnet name>"
         },
         "automationRegistrationURL": {
-            "value": "DemoDSC"
+            "value": "<Go to DSC and then 'Access Keys' and get the URL>"
         },
         "registrationKey": {
-            "value": "DemoDSC"
+            "value": "<Go to DSC and then 'Access Keys' and get the key>"
         },        
         "nodeConfigurationName": {
-            "value": "TestConfig.IsWebServer"
+            "value": "<insert the DSC configuration name you want applied>"
         }           
     }
 }
