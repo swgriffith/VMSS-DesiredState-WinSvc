@@ -62,7 +62,13 @@
         },
         "adminPassword": {
             "type": "securestring"
-        }
+        },
+        "automationAccountName": {
+            "type": "string"
+        },
+        "nodeConfigurationName": {
+            "type": "string"
+        }        
     },
     "variables": {
         "pipName": "[concat(parameters('vmssName'), 'pubip')]",
@@ -228,6 +234,61 @@
                         }
                     },
                     "priority": "[parameters('priority')]",
+                    "extensionProfile": {
+                        "extensions": [
+                          {
+                            "name": "Microsoft.Powershell.DSC",
+                            "properties": {
+                              "publisher": "Microsoft.Powershell",
+                              "type": "DSC",
+                              "typeHandlerVersion": "2.76",
+                              "autoUpgradeMinorVersion": true,
+                              "protectedSettings": {
+                                "Items": {
+                                  "registrationKeyPrivate": "[listKeys(resourceId('Microsoft.Automation/automationAccounts/', parameters('automationAccountName')), '2018-01-15').Keys[0].value]"
+                                }
+                              },
+                              "settings": {
+                                "Properties": [
+                                  {
+                                    "Name": "RegistrationKey",
+                                    "Value": {
+                                      "UserName": "PLACEHOLDER_DONOTUSE",
+                                      "Password": "PrivateSettingsRef:registrationKeyPrivate"
+                                    },
+                                    "TypeName": "System.Management.Automation.PSCredential"
+                                  },
+                                  {
+                                    "Name": "RegistrationUrl",
+                                    "Value": "[reference(concat('Microsoft.Automation/automationAccounts/', parameters('automationAccountName'))).registrationUrl]",
+                                    "TypeName": "System.String"
+                                  },
+                                  {
+                                    "Name": "NodeConfigurationName",
+                                    "Value": "[parameters('nodeConfigurationName')]",
+                                    "TypeName": "System.String"
+                                  },
+                                  {
+                                    "Name": "ConfigurationMode",
+                                    "Value": "ApplyandAutoCorrect",
+                                    "TypeName": "System.String"
+                                  },
+                                  {
+                                    "Name": "RebootNodeIfNeeded",
+                                    "Value": true,
+                                    "TypeName": "System.Boolean"
+                                  },
+                                  {
+                                    "Name": "ActionAfterReboot",
+                                    "Value": "ContinueConfiguration",
+                                    "TypeName": "System.String"
+                                  }
+                                ]
+                              }
+                            }
+                          }
+                        ]
+                      },                    
                     "osProfile": {
                         "computerNamePrefix": "[variables('namingInfix')]",
                         "adminUsername": "[parameters('adminUsername')]",
