@@ -231,43 +231,6 @@
                             "type": "Microsoft.Network/virtualNetworks",
                             "location": "[parameters('location')]",
                             "properties": {
-                                "provisioningState": "Succeeded",
-                                "resourceGuid": "449f7f83-5b04-40ce-8051-87bc155a0ad2",
-                                "addressSpace": {
-                                    "addressPrefixes": [
-                                        "172.17.0.0/16"
-                                    ]
-                                },
-                                "subnets": [
-                                    {
-                                        "name": "default",
-                                        "id": "/subscriptions/62afe9fc-190b-4f18-95ac-e5426017d4c8/resourceGroups/ThrowAwayVMSS/providers/Microsoft.Network/virtualNetworks/VMSS-Vnet/subnets/default",
-                                        "etag": "W/\"c7dd905b-9378-4a9d-b404-0349184163c3\"",
-                                        "properties": {
-                                            "provisioningState": "Succeeded",
-                                            "addressPrefix": "172.17.0.0/24",
-                                            "ipConfigurations": [
-                                                {
-                                                    "id": "/subscriptions/62afe9fc-190b-4f18-95ac-e5426017d4c8/resourceGroups/ThrowAwayVMSS/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/virtualMachines/1/networkInterfaces/myScaleSet/ipConfigurations/myScaleSet"
-                                                },
-                                                {
-                                                    "id": "/subscriptions/62afe9fc-190b-4f18-95ac-e5426017d4c8/resourceGroups/ThrowAwayVMSS/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/virtualMachines/3/networkInterfaces/myScaleSet/ipConfigurations/myScaleSet"
-                                                },
-                                                {
-                                                    "id": "/subscriptions/62afe9fc-190b-4f18-95ac-e5426017d4c8/resourceGroups/ThrowAwayVMSS/providers/Microsoft.Network/networkInterfaces/griffithwin389/ipConfigurations/ipconfig1"
-                                                }
-                                            ],
-                                            "delegations": [],
-                                            "networkSecurityGroup": {
-                                                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('networkSecurityGroupName'))]"
-                                            }
-                                        },
-                                        "type": "Microsoft.Network/virtualNetworks/subnets"
-                                    }
-                                ],
-                                "virtualNetworkPeerings": [],
-                                "enableDdosProtection": false,
-                                "enableVmProtection": false
                             }
                         }
                     ]
