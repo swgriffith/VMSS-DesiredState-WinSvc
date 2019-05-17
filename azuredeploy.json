@@ -63,8 +63,11 @@
         "adminPassword": {
             "type": "securestring"
         },
-        "automationAccountName": {
+        "automationRegistrationURL": {
             "type": "string"
+        },
+        "registrationKey": {
+            "type": "securestring"
         },
         "nodeConfigurationName": {
             "type": "string"
@@ -245,7 +248,7 @@
                               "autoUpgradeMinorVersion": true,
                               "protectedSettings": {
                                 "Items": {
-                                  "registrationKeyPrivate": "[listKeys(resourceId('Microsoft.Automation/automationAccounts/', parameters('automationAccountName')), '2018-01-15').Keys[0].value]"
+                                  "registrationKeyPrivate": "[parameters('registrationKey')]"
                                 }
                               },
                               "settings": {
@@ -260,7 +263,7 @@
                                   },
                                   {
                                     "Name": "RegistrationUrl",
-                                    "Value": "[reference(concat('Microsoft.Automation/automationAccounts/', parameters('automationAccountName'))).registrationUrl]",
+                                    "Value": "[parameters('automationRegistrationURL')]",
                                     "TypeName": "System.String"
                                   },
                                   {
