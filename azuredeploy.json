@@ -24,12 +24,10 @@
         "image": {
             "type": "object",
             "defaultValue": {
-                "value": {
-                    "sku": "2016-Datacenter",
-                    "publisher": "MicrosoftWindowsServer",
-                    "version": "latest",
-                    "offer": "WindowsServer"
-                }
+                "sku": "2016-Datacenter",
+                "publisher": "MicrosoftWindowsServer",
+                "version": "latest",
+                "offer": "WindowsServer"
             }
         },
         "singlePlacementGroup": {
@@ -64,12 +62,6 @@
         },
         "adminPassword": {
             "type": "securestring"
-        },
-        "vnetName": {
-            "type": "string"
-        },
-        "subnetResourceGroup": {
-            "type": "string"
         }
     },
     "variables": {

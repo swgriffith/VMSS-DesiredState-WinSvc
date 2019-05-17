@@ -23,12 +23,6 @@
         "dnsprefix": {
             "value": "myscalesetgriffith"
         },
-        "vnetName": {
-            "value": "VMSS-Vnet"
-        },
-        "subnetResourceGroup": {
-            "value": "ThrowAwayVMSS"
-        },
         "subnetId": {
             "value": "/subscriptions/62afe9fc-190b-4f18-95ac-e5426017d4c8/resourceGroups/ThrowAwayVMSS/providers/Microsoft.Network/virtualNetworks/VMSS-Vnet/subnets/default"
         }
