@@ -1,0 +1,36 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "value": "eastus"
+        },
+        "vmssName": {
+            "value": "myscaleset"
+        },
+        "vmSku": {
+            "value": "Standard_DS1_v2"
+        },
+        "adminUsername": {
+            "value": "griffith"
+        },        
+        "adminPassword": {
+            "value": null
+        },
+        "instanceCount": {
+            "value": "2"
+        },
+        "dnsprefix": {
+            "value": "myscalesetgriffith"
+        },
+        "vnetName": {
+            "value": "VMSS-Vnet"
+        },
+        "subnetResourceGroup": {
+            "value": "ThrowAwayVMSS"
+        },
+        "subnetId": {
+            "value": "/subscriptions/62afe9fc-190b-4f18-95ac-e5426017d4c8/resourceGroups/ThrowAwayVMSS/providers/Microsoft.Network/virtualNetworks/VMSS-Vnet/subnets/default"
+        }
+    }
+}
