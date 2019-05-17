@@ -209,35 +209,6 @@
             }
         },
         {
-            "apiVersion": "2017-05-10",
-            "type": "Microsoft.Resources/deployments",
-            "name": "updateVNet",
-            "dependsOn": [
-                "[resourceId('Microsoft.Network/networkSecurityGroups', variables('networkSecurityGroupName'))]"
-            ],
-            "resourceGroup": "[parameters('subnetResourceGroup')]",
-            "properties": {
-                "mode": "Incremental",
-                "parameters": {},
-                "template": {
-                    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-                    "contentVersion": "1.0.0.0",
-                    "parameters": {},
-                    "variables": {},
-                    "resources": [
-                        {
-                            "apiVersion": "2018-01-01",
-                            "name": "[parameters('vnetName')]",
-                            "type": "Microsoft.Network/virtualNetworks",
-                            "location": "[parameters('location')]",
-                            "properties": {
-                            }
-                        }
-                    ]
-                }
-            }
-        },
-        {
             "name": "[parameters('vmssName')]",
             "type": "Microsoft.Compute/virtualMachineScaleSets",
             "apiVersion": "2018-06-01",
