@@ -19,6 +19,9 @@ This deployment assumes the following:
   - Once uploaded, click on the configuration and then click 'Compile'
   - Make note of the configuration name (ex. TestConfig.ServiceHost from DesiredState.ps1) as you'll use this as a parameter vaule you when you deploy the VMSS.
 
+
+***Note:*** In this repo you'll also find the source for a basic DemoService Windows Service you can use for testing. This windows service, once installed and started, will create a new Application Log in the Windows Event Log called 'DemoLog'. It will write a start up and shutdown event, as well as an event per minute to show the service is alive. I've also provided a compiled copy under 'Releases'.
+
 ## To deploy this template use one of the following options.
 
 From Azure PowerShell
