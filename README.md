@@ -10,6 +10,15 @@ This deployment assumes the following:
 
 3. In order to connect to individual Windows nodes in the scale set you'll use the NAT created within the load balancer. This NAT translates the front end IP port range of 50000 to 50119 to port 3389 on the individual backend servers. You'll need to make sure that you have a NSG rule on your Subnet that allows those ports into the subnet.
 
+4. The DSC script uses the xPSDesiredStateConfiguration module. You'll need to go to your Azure Automation Account and under "Modules Gallery" search for xPSDesiredStateConfiguration, and import the module into your Automation Account. It may take a few minutes before the module is available for you to compile.
+
+5. Finally, you'll want to go to your Automation Account and then to the 'State Configuration (DSC)' blade, and execute the following steps:
+  - Click the 'Configurations' tab
+  - Click the + link to add a new configuration
+  - Choose the file explorer and chose the ps1 file containing your DSC configuration (ex. From this repo its DesiredState.ps1)
+  - Once uploaded, click on the configuration and then click 'Compile'
+  - Make note of the configuration name (ex. TestConfig.ServiceHost from DesiredState.ps1) as you'll use this as a parameter vaule you when you deploy the VMSS.
+
 ## To deploy this template use one of the following options.
 
 From Azure PowerShell
