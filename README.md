@@ -8,7 +8,7 @@ This deployment assumes the following:
 
 2. You're deploying to an existing Virtual Network and Subnet. You'll need to go to the virtual network and get the 'Resource ID' and append 'subnets/<subnetName>' (ex. /subscriptions/62a48929fc-184b-4488-77ac-e7838d4c8/resourceGroups/MyResourceGroup/providers/Microsoft.Network/virtualNetworks/MyVirtualNetwork/subnets/mysubnet). This value will be used for the 'subnetId' parameter in the deployment.
 
-3. If you intend to connect to individual Windows nodes in the scale set you'll use the NAT created within the load balancer. This NAT translates the front end IP port range of 50000 to 50119 to port 3389 on the individual backend servers. You'll need to make sure that you have a NSG rule on your Subnet that allows those ports into the subnet.
+3. If you intend to connect to individual Windows nodes in the scale set you'll use the NAT created within the load balancer. This NAT translates the front end IP port range of 50000 to 50119 to port 3389 on the individual backend servers. You'll need to make sure that you have NSG rules on your Subnet that allow ports 50000-50119 and 3389 into the subnet. 
 
 4. The DSC script uses the xPSDesiredStateConfiguration module. You'll need to go to your Azure Automation Account and under "Modules Gallery" search for xPSDesiredStateConfiguration, and import the module into your Automation Account. It may take a few minutes before the module is available for you to use when you compile your DSC Configuration.
 
