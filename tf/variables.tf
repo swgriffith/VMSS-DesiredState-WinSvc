@@ -44,6 +44,15 @@ variable "dnsprefix" {
   description = "VMSS Load Balancer Public IP - For RDP NAT"
 }
 
+variable "useExistingSubnet" {
+  description = "Boolean value to determine if an existing subnet will be used or if creating new"
+  default = false
+}
+
+variable "existingSubnetID" {
+  description = "If using an existing subnet, place the fully qualified ARM subnet ID here"
+}
+
 variable "automationRegistrationURL" {
   description = "URL to register nodes with Azure Automation Desired State Configuration"
 }

@@ -1,5 +1,5 @@
 # Deploy VMSS Connected to Azure Automation DSC 
-The template and parameters file here will allow you to create a VM Scale Set that registers all machines with Azure Automation DSC and applies configuration. 
+The templates, both ARM and Terraform, in this repository will allow you to create a VM Scale Set that registers all machines with Azure Automation DSC and applies configuration. 
 
 This deployment assumes the following:
 1. You already have an Azure Automation account created with State Configuration setup. See the following guide for that setup.
@@ -41,8 +41,18 @@ RG=<Resource Group Name>
 LOC=<Location (ex. eastus, westus)>
 az group create -n $RG -l $LOC
 az group deployment create -g $RG -n initialdeploy --template-file azuredeploy.json --parameters @azuredeploy.parameters.json
+
 ```
 
+Using Terraform 
+```bash
+cd tf
+#Either create a new .tfvars file or edit the testenv.tfvars
+
+terraform init
+tf plan -var-file=testenv.tfvars  
+tf apply -var-file=testenv.tfvars  
+```
 ## A Note on Overprovisioning
 The default behavior of VM Scale Sets assumes that, while scaling up, some nodes my fail. For this reason, by default, VMSS will overprovision the cluster. This overprovisioning adds a few extra nodes during scale up and then will delete them after the requested number of nodes are successfully deployed. When dealing with State Configuration your state management platform does not realize that these additional nodes are only being created as backup in case of other node failure, so it will treat them as normal nodes. In this case you will see additional nodes registered with your state configuration platform, even though the nodes may already be gone from your VMSS. In the case of Azure Automation State Configuration you will see these nodes listed in an 'In Progress' state.
 

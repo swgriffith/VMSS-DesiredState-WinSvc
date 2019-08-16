@@ -91,7 +91,7 @@ PROTECTED_SETTINGS
 
     ip_configuration {
       name                                   = "IPConfiguration"
-      subnet_id                              = "${azurerm_subnet.vmss.id}"
+      subnet_id                              = "${var.useExistingSubnet ? var.existingSubnetID : azurerm_subnet.vmss.0.id}"
       load_balancer_backend_address_pool_ids = ["${azurerm_lb_backend_address_pool.vmss.id}"]
       load_balancer_inbound_nat_rules_ids    = ["${azurerm_lb_nat_pool.vmss.id}"]
       primary                                = true
