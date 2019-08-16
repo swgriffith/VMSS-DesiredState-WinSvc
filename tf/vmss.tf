@@ -25,18 +25,10 @@ resource "azurerm_virtual_machine_scale_set" "vmss" {
    managed_disk_type = "Standard_LRS"
  }
 
- #storage_profile_data_disk {
- #  lun          = 0
- #  caching        = "ReadWrite"
- #  create_option  = "Empty"
- #  disk_size_gb   = 10
- #}
-
  os_profile {
    computer_name_prefix = "vmlab"
    admin_username       = "${var.adminUsername}"
    admin_password       = "${var.adminPassword}"
-   custom_data          = "${file("web.conf")}"
  }
 
   extension {
@@ -100,7 +92,8 @@ PROTECTED_SETTINGS
    ip_configuration {
      name                                   = "IPConfiguration"
      subnet_id                              = "${azurerm_subnet.vmss.id}"
-     #Removed ALB: load_balancer_backend_address_pool_ids = ["${azurerm_lb_backend_address_pool.bpepool.id}"]
+     load_balancer_backend_address_pool_ids = ["${azurerm_lb_backend_address_pool.vmss.id}"]
+     load_balancer_inbound_nat_rules_ids    = ["${azurerm_lb_nat_pool.vmss.id}"]
      primary = true
    }
  }
