@@ -6,7 +6,7 @@ This deployment assumes the following:
 
 [Azure Automation State Configuration Setup](https://docs.microsoft.com/en-us/azure/automation/automation-dsc-getting-started)
 
-2. You're deploying to an existing Virtual Network and Subnet. You'll need to go to the virtual network and get the 'Resource ID' and append 'subnets/<subnetName>' (ex. /subscriptions/62a48929fc-184b-4488-77ac-e7838d4c8/resourceGroups/MyResourceGroup/providers/Microsoft.Network/virtualNetworks/MyVirtualNetwork/subnets/mysubnet). This value will be used for the 'subnetId' parameter in the deployment.
+2. If using the ARM deployment this assmes you're deploying to an existing Virtual Network and Subnet. You'll need to go to the virtual network and get the 'Resource ID' and append 'subnets/<subnetName>' (ex. /subscriptions/62a48929fc-184b-4488-77ac-e7838d4c8/resourceGroups/MyResourceGroup/providers/Microsoft.Network/virtualNetworks/MyVirtualNetwork/subnets/mysubnet). This value will be used for the 'subnetId' parameter in the deployment. For Terraform deployment you can choose to either specify a subnet id or not using the 'useExistingSubnet' and 'existingSubnetID' variables.
 
 3. If you intend to connect to individual Windows nodes in the scale set you'll use the NAT created within the load balancer. This NAT translates the front end IP port range of 50000 to 50119 to port 3389 on the individual backend servers. You'll need to make sure that you have NSG rules on your Subnet that allow ports 50000-50119 and 3389 into the subnet. 
 
