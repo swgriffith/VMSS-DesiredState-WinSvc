@@ -9,6 +9,7 @@ resource "azurerm_public_ip" "vmss" {
 
 resource "azurerm_lb" "vmss" {
   name                = "vmss-lb"
+  depends_on          = ["azurerm_public_ip.vmss"]
   location            = "${var.location}"
   resource_group_name = "${azurerm_resource_group.vmss.name}"
 
@@ -24,12 +25,14 @@ resource "azurerm_lb_backend_address_pool" "vmss" {
   resource_group_name = "${azurerm_resource_group.vmss.name}"
   loadbalancer_id     = "${azurerm_lb.vmss.id}"
   name                = "BackEndAddressPool"
+  depends_on          = ["azurerm_lb.vmss"]
 }
 
 resource "azurerm_lb_probe" "vmss" {
   resource_group_name = "${azurerm_resource_group.vmss.name}"
   loadbalancer_id     = "${azurerm_lb.vmss.id}"
   name                = "tcpProbe"
+  depends_on          = ["azurerm_lb.vmss"]
   protocol            = "tcp"
   port                = 3389
   interval_in_seconds = 5
@@ -40,6 +43,7 @@ resource "azurerm_lb_nat_pool" "vmss" {
   resource_group_name            = "${azurerm_resource_group.vmss.name}"
   loadbalancer_id                = "${azurerm_lb.vmss.id}"
   name                           = "WinSvcPool"
+  depends_on                     = ["azurerm_lb.vmss"]
   protocol                       = "Tcp"
   frontend_port_start            = 50000
   frontend_port_end              = 50119
