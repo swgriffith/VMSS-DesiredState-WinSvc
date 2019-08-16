@@ -17,7 +17,7 @@ configuration TestConfig
         xRemoteFile DownloadPackage 
         {  
             DependsOn       = "[File]SetupDir"
-            Uri             = "<Insert SAS URL to Zip file containing service>"
+            Uri             = "https://demoworkspace.blob.core.windows.net/demofiles/DemoService.zip?sp=r&st=2019-08-15T18:40:53Z&se=2020-08-16T02:40:53Z&spr=https&sv=2018-03-28&sig=hntGRUr66%2Bk5e%2FRP8F7w196gGUhSb6aY7vF5KH1ttLE%3D&sr=b"
             DestinationPath = "c:\Setup\DemoService.zip"
             MatchSource     = $false
         }
